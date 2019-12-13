@@ -1,16 +1,22 @@
+import { CampaignService } from './campaign.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EmailEditorComponent } from 'angular-email-editor';
+import { EmailTemplate } from './template.model';
 
+// import sample from '/sample.json';
 export enum CampaignState {
   home,
   create_campaign,
   create_template
 }
 
+
+
 @Component({
   selector: 'app-campaign',
   templateUrl: './campaign.component.html',
-  styleUrls: ['./campaign.component.css']
+  styleUrls: ['./campaign.component.css'],
+  providers: [CampaignService]
 })
 export class CampaignComponent implements OnInit {
 
@@ -18,12 +24,14 @@ export class CampaignComponent implements OnInit {
   campaignState: CampaignState = CampaignState.home 
   @ViewChild(EmailEditorComponent, null)
   private emailEditor: EmailEditorComponent;
- 
-  exportHtml() {
-    this.emailEditor.exportHtml((data) => console.log('exportHtml', data));
-  }
+  url = ""
 
-  constructor() { }
+
+  // editorLoaded() {
+  //   this.emailEditor.loadDesign(sample);
+  // }
+
+  constructor(private apiService: CampaignService) { }
 
   ngOnInit() {
   }
@@ -36,6 +44,34 @@ export class CampaignComponent implements OnInit {
   compareState(state: CampaignState) {
     console.log(state);
     return this.campaignState == state
+  }
+
+  exportHtml() {
+    this.emailEditor.exportHtml((data) => {
+      console.log('exportHtml', data)
+      let emailTemplate = new EmailTemplate()
+    emailTemplate.email = "nagarajubasara@gmail.com"
+    emailTemplate.subject = "Email campaign"
+    emailTemplate.html = data["html"]
+    this.apiService.postTemplate(emailTemplate).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        // this.serverErrorHandler(err)
+      }
+    )
+    });
+    // this.apiService.getData().subscribe(
+    //   res => {
+    //     console.log(res);
+    //   },
+    //   err => {
+    //     // this.serverErrorHandler(err)
+    //   }
+    // )
+    
+
   }
 
 }

@@ -70,7 +70,7 @@
       <!--Create Campaign-->
       <div *ngIf="this.compareState(campaign.create_template)">
             <div class="container">
-                    <email-editor [options]="options" (loaded)="editorLoaded($event)"></email-editor>
+                    <email-editor [options]="options" ></email-editor>
                     <button type="button" class="btn btn-primary" (click)="exportHtml()">Send Email</button>
                   </div>
       </div>
