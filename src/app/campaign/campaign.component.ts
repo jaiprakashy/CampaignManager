@@ -10,8 +10,6 @@ export enum CampaignState {
   create_template
 }
 
-
-
 @Component({
   selector: 'app-campaign',
   templateUrl: './campaign.component.html',
@@ -58,18 +56,19 @@ export class CampaignComponent implements OnInit {
         console.log(res);
       },
       err => {
+        console.log(err)
         // this.serverErrorHandler(err)
       }
     )
     });
-    // this.apiService.getData().subscribe(
-    //   res => {
-    //     console.log(res);
-    //   },
-    //   err => {
-    //     // this.serverErrorHandler(err)
-    //   }
-    // )
+    this.apiService.getData().subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        // this.serverErrorHandler(err)
+      }
+    )
     
 
   }

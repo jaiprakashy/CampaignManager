@@ -65,7 +65,42 @@
       </div>
       <!--Create Campaign-->
       <div *ngIf="this.compareState(campaign.create_campaign)">
-            <button type="button" class="btn btn-primary" (click)="this.stateChanged(campaign.create_template)">Create Template</button>
+            <button type="button" class="btn btn-primary" (click)="this.stateChanged(campaign.create_template)">Create Template from Scratch</button>
+            <div class="row">
+                    <div class="card col col-md-3" style="width: 18rem;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Template 1</h5>
+                              <p class="card-text">Can be used for promotional offers emails</p>
+                              <button type="button" class="btn btn-primary" (click)="this.stateChanged(campaign.create_template)">Use Template</button>
+                            </div>
+                          </div>
+                          <div class="card col col-md-3" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Template 2</h5>
+                                  <p class="card-text">Can be used for promotional offers emails</p>
+                                  <button type="button" class="btn btn-primary" (click)="this.stateChanged(campaign.create_template)">Use Template</button>
+                                </div>
+                              </div>
+                              <div class="card col col-md-3" style="width: 18rem;">
+                                    <img src="..." class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Template 3</h5>
+                                      <p class="card-text">Can be used for promotional offers emails</p>
+                                      <button type="button" class="btn btn-primary" (click)="this.stateChanged(campaign.create_template)">Use Template</button>
+                                    </div>
+                                  </div>
+                                  <div class="card col col-md-3" style="width: 18rem;">
+                                        <img src="..." class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                          <h5 class="card-title">Template 4</h5>
+                                          <p class="card-text">Can be used for promotional offers emails</p>
+                                          <button type="button" class="btn btn-primary" (click)="this.stateChanged(campaign.create_template)">Use Template</button>
+                                        </div>
+                                      </div>
+            </div>
+
       </div>
       <!--Create Campaign-->
       <div *ngIf="this.compareState(campaign.create_template)">

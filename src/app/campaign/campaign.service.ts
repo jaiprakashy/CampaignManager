@@ -7,7 +7,7 @@ import { EmailTemplate } from './template.model';
 })
 export class CampaignService {
 
-  apiURL: string = 'http://dummy.restapiexample.com/api/v1/employees';
+  apiURL: string = 'http://dummy.restapiexample.com/api/v1/create';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -16,6 +16,10 @@ export class CampaignService {
   }
 
   postTemplate(template: EmailTemplate) {
-    return this.httpClient.post(this.apiURL+'/sendMail', template);
+    return this.httpClient.post(this.apiURL, template);
+  }
+
+  getUsers() {
+    return this.httpClient.get(this.apiURL)
   }
 }
